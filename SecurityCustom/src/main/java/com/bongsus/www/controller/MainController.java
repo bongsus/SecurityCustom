@@ -3,8 +3,14 @@
  */
 package com.bongsus.www.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.AllArgsConstructor;
 
@@ -41,5 +47,34 @@ public class MainController {
 	 */
 	@GetMapping("/admin")
 	public void dispAdmin() {}
+	
+	@GetMapping("/viewTest")
+	public void viewTest() {
+		
+	}
+	
+	@PostMapping("/viewTest")
+	public String doViewTest(@RequestParam String pageNum, Model model) {
+		
+		if ("2".equals(pageNum)) {
+			List<String> list = new ArrayList<String>();
+			list.add("one");
+			list.add("two");
+			list.add("three");
+			list.add("four");
+			model.addAttribute("list", list);
+			
+			return "/viewTest2";
+		} else if ("1".equals(pageNum)) {
+			String str = "1번 페이지 데이터 입니다.";
+			model.addAttribute("str", str);
+			
+			return "/viewTest1";
+		} else {
+			return "/viewTest";
+		}
+		
+		
+	}
 
 }
