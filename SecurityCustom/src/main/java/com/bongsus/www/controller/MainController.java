@@ -26,7 +26,7 @@ import lombok.AllArgsConstructor;
 
 @Controller
 @AllArgsConstructor
-public class MainController {
+public class MainController { 
 	
 	/**
 	 * 메인
