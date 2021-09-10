@@ -34,7 +34,7 @@ public class MainController {
 	 * @return	메인 화면
 	 */
 	@GetMapping("/")
-	public String index() {
+	public String index() { 
 		
 		return "index";
 		
