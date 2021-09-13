@@ -15,7 +15,7 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationFa
 import org.springframework.stereotype.Component;
 
 import com.bongsus.www.dto.ResponseDataDTO;
-import com.bongsus.www.util.VanYamlRead;
+import com.bongsus.www.util.YamlRead;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
@@ -32,7 +32,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 	
 	@Autowired
-	private VanYamlRead vanYamlRead;
+	private YamlRead yamlRead;
 	
 	@Override
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
@@ -41,7 +41,7 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
 		ObjectMapper mapper = new ObjectMapper();	//JSON 변경용
     	
     	ResponseDataDTO responseDataDTO = new ResponseDataDTO();
-    	responseDataDTO.setCode(vanYamlRead.getError());
+    	responseDataDTO.setCode(yamlRead.getError());
     	responseDataDTO.setMessage("아이디 혹은 비밀번호가 일치하지 않습니다.");
     	
     	response.setCharacterEncoding("UTF-8");

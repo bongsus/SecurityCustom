@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 
 import com.bongsus.www.domain.ResponseDataCode;
 import com.bongsus.www.dto.ResponseDataDTO;
-import com.bongsus.www.util.VanYamlRead;
+import com.bongsus.www.util.YamlRead;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
@@ -35,7 +35,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 	
 	@Autowired
-	private VanYamlRead vanYamlRead;
+	private YamlRead yamlRead;
 	
 	@Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -44,7 +44,7 @@ public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationS
     	ObjectMapper mapper = new ObjectMapper();	//JSON 변경용
     	
     	ResponseDataDTO responseDataDTO = new ResponseDataDTO();
-    	responseDataDTO.setCode(vanYamlRead.getSuccess());
+    	responseDataDTO.setCode(yamlRead.getSuccess());
     	
     	String prevPage = request.getSession().getAttribute("prevPage").toString();	//이전 페이지 가져오기
     	 

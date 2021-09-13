@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @PropertySource(value = "classpath:constant.yml", factory = YamlPropertySourceFactory.class)
 @ConfigurationProperties(prefix = "responsecode")
-public class VanYamlRead {
+public class YamlRead {
 	
 	private String success;
 	private String error;
